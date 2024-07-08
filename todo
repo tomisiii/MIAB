@@ -1,0 +1,7 @@
+1. Work on edit_amount func
+2. Break out of the loop in record_amount
+3. Print out function
+4. Subtract function
+5. Edit/Update Function 
+
+// drug = [{Id, Name, Quantity, Category}, {Id, Name, Quantity, Category}]
