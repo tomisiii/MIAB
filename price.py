@@ -29,6 +29,7 @@ def price():
             print("Invalid choice. Please enter a number from 1 to 6.")
 
 def enter_price(prices):
+    #a function for user to enter their prices
     while True:
         try:
             price_str = input("Enter the price: ").strip()
@@ -40,6 +41,7 @@ def enter_price(prices):
             print("Invalid input. Please enter a valid number.")
 
 def remove_price(prices):
+    #a function for users to delete price of drug
     if not prices:
         print("The list of prices is empty.")
         return
@@ -47,6 +49,7 @@ def remove_price(prices):
     print("Current prices:")
     print_prices(prices)
     try:
+        #error ctching to make sure the price trying to be removed is within the array
         index = int(input("Enter the index of the price to remove: "))
         if 0 <= index < len(prices):
             removed_price = prices.pop(index)
@@ -57,6 +60,7 @@ def remove_price(prices):
         print("Invalid input. Please enter a valid index.")
 
 def edit_price(prices):
+    #FUNCTION TO EDIT PRICES
     if not prices:
         print("The list of prices is empty.")
         return
@@ -76,6 +80,7 @@ def edit_price(prices):
         print("Invalid input. Please enter a valid number for the price.")
 
 def search_price(prices):
+    #function to search for prices within list
     if not prices:
         print("The list of prices is empty.")
         return
@@ -92,6 +97,7 @@ def search_price(prices):
         print("Invalid input. Please enter a valid number to search.")
 
 def print_price(prices):
+    #function to edit price list
     if not prices:
         print("The list of prices is empty.")
     else:
