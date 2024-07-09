@@ -1,15 +1,15 @@
 def name():
-    # Initialize an empty list to store names (or drugs)
-    drugs = []
+    # Initialize an empty dictionary to store names (or drugs)
+    drugs = {}
 
     #prompt user to pick an option
     while True:
         print("\nMenu:")
-        print("1. Add a drug")
-        print("2. Remove a drug")
-        print("3. Search for a drug")
-        print("4. Edit a drug name")
-        print("5. Print all drugs")
+        print("1. Add a drugs information")
+        print("2. Remove drug information")
+        print("3. Search for drug information")
+        print("4. Edit drug information")
+        print("5. Print all drug information")
         print("6. Quit")
         choice = input("Enter your choice (1-6): ")
 
@@ -30,20 +30,33 @@ def name():
             print("Invalid choice. Please enter a number from 1 to 6.")
 
 def add_drug(drugs):
-    name = input("Enter the name of the drug to add: ").strip()
-    if name in drugs:
-        print(f"{name} is already in the list.")
-    else:
-        drugs.append(name)
-        print(f"{name} added to the list.")
+   # name = input("Enter the name of the drug to add: ").strip()
+   # if name in drugs:
+  #      print(f"{name} is already in the list.")
+  #  else:
+   #     drugs.append(name)
+   #     print(f"{name} added to the list.")
+
+       #this will add the drugs information
+       #name: input("Enter the name of the drug please :")
+       #if name in drug
+       #Quantity : int(input("Enter its Quantity please : ")),
+       #Price : float(input("How much does the drug cost : ")),
+       #Category: input("What is the category of this drug ")
+       
+   
 
 def remove_drug(drugs):
-    name = input("Enter the name of the drug to remove: ").strip()
-    if name in drugs:
-        drugs.remove(name)
-        print(f"{name} removed from the list.")
-    else:
-        print(f"{name} is not in the list.")
+   # name = input("Enter the name of the drug to remove: ").strip()
+    #if name in drugs:
+     #   drugs.remove(name)
+      #  print(f"{name} removed from the list.")
+    #else:
+        #print(f"{name} is not in the list.")
+        #FUNCTION TO REMOVE A DRUG BY NAME 
+        drugName = ("What would you like to remove ")
+        if drugName == 'name':
+            del drug["name"]
 
 def search_drug(drugs):
     name = input("Enter the name of the drug to search: ").strip()
