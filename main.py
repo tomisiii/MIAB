@@ -3,11 +3,13 @@ def main():
     drugs = {}
 
     def add_drug(drugs):
+        #FUNCTION TO  ADD DRUGS
         name = input("Enter the name of the drug: ")
         if name in drugs:
             print(f"{name} is already in the list.")
         else:
             drugs[name] = {
+                #STORING THE OTHER VARIABLES WITHIN THE INITIAL NAME VARIABLE
                 "Quantity": int(input("Enter quantity: ")),
                 "Price": float(input("Enter price: ")),
                 "Category": input("Enter category: ")
@@ -15,6 +17,8 @@ def main():
             print(f"{name} added to the list.")
 
     def remove_drug(drugs):
+        #FUNCTION TO DELETE A DRUG FROM THE DICTIONARY
+        #THINK OF WHETHER TO REMOVE A CERTAIN VARIABLE 
         name = input("Enter the name of the drug to remove: ")
         if name in drugs:
             del drugs[name]
@@ -23,6 +27,7 @@ def main():
             print(f"{name} is not in the list.")
 
     def search_drug(drugs):
+        #FUNCTION TO SEARCH WITHIN THE DICTIONARY
         name = input("Enter the name of the drug to search: ")
         if name in drugs:
             print(f"Name: {name}")

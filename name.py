@@ -30,13 +30,13 @@ def name():
             print("Invalid choice. Please enter a number from 1 to 6.")
 
 def add_drug(drugs):
-   # name = input("Enter the name of the drug to add: ").strip()
-   # if name in drugs:
-  #      print(f"{name} is already in the list.")
-  #  else:
-   #     drugs.append(name)
-   #     print(f"{name} added to the list.")
-
+    name = input("Enter the name of the drug to add: ").strip()
+    if name in drugs:
+       print(f"{name} is already in the list.")
+    else:
+        drugs.append(name)
+        print(f"{name} added to the list.")
+ 
        #this will add the drugs information
        #name: input("Enter the name of the drug please :")
        #if name in drug
@@ -47,16 +47,13 @@ def add_drug(drugs):
    
 
 def remove_drug(drugs):
-   # name = input("Enter the name of the drug to remove: ").strip()
-    #if name in drugs:
-     #   drugs.remove(name)
-      #  print(f"{name} removed from the list.")
-    #else:
-        #print(f"{name} is not in the list.")
-        #FUNCTION TO REMOVE A DRUG BY NAME 
-        drugName = ("What would you like to remove ")
-        if drugName == 'name':
-            del drug["name"]
+    name = input("Enter the name of the drug to remove: ").strip()
+    if name in drugs:
+       drugs.remove(name)
+       print(f"{name} removed from the list.")
+    else:
+        print(f"{name} is not in the list.")
+     
 
 def search_drug(drugs):
     name = input("Enter the name of the drug to search: ").strip()
