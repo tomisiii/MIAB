@@ -38,6 +38,7 @@ def main():
             print(f"{name} is not found in the list.")
 
     def edit_drug(drugs):
+        #FUNCTION TO EDIT DRUG INFORMATION
         name = input("Enter the name of the drug to edit: ")
         if name in drugs:
             print(f"Current information for {name}:")
@@ -52,10 +53,12 @@ def main():
             print(f"{name} is not in the list.")
 
     def print_drugs(drugs):
+        #FUNCTION TO PRINT DICTIONARY
         if not drugs:
             print("No drugs in the list.")
         else:
             print("List of drugs:")
+            #LOOP TO PRINT DICTIONARY
             for name, info in drugs.items():
                 print(f"Name: {name}")
                 print(f"Quantity: {info['Quantity']}")
@@ -64,6 +67,7 @@ def main():
                 print("--------------------------")
 
     while True:
+        #LOOPING THE DROWN DOWN MENU
         print("\nMenu:")
         print("1. Add drug information")
         print("2. Remove drug information")
