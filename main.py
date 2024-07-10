@@ -6,7 +6,7 @@ def main():
         #FUNCTION TO  ADD DRUGS
         name = input("Enter the name of the drug: ")
         if name in drugs:
-            print(f"{name} is already in the list.")
+            print(f"{name} is already in the list.") 
         else:
             drugs[name] = {
                 #STORING THE OTHER VARIABLES WITHIN THE INITIAL NAME VARIABLE

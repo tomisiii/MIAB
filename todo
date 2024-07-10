@@ -11,3 +11,7 @@
 https://www.w3schools.com/python/python_dictionaries_add.asp
 https://www.bing.com/search?pglt=43&q=how+to+accept+a+dictonary+in+python&cvid=5db9c9f74bd44388925f25cbbe36c7e3&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEAyCAgJEOkHGPxV0gEJMTM2MThqMGoxqAIAsAIB&FORM=ANNAB1&PC=U531
 https://www.geeksforgeeks.org/append-a-value-to-a-dictionary-python/
+
+Notes: 
+prices might only be updated when a full box of a drug is sold , but we sell satchets at times
+Will the dictionary automatically assign an ID 
