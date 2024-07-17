@@ -1,73 +1,66 @@
+
+import pymysql
+
+# Define a global connection object
+con = None
+
+def initialize_db():
+    global con
+    try:
+        con = pymysql.connect(
+            host='localhost',
+            user='root',
+            database='drug'  # Corrected database name
+        )
+        print("Database connection established.")
+    except pymysql.Error as e:
+        print(f"Error connecting to database: {e}")
+
+def add_drug(drug_info):
+    global con
+    try:
+        if con is None:
+            initialize_db()  # Initialize database connection if not already done
+
+        if con:
+            with con.cursor() as cursor:
+                sql = '''
+                INSERT INTO drug_info(name, quantity, price, category)
+                VALUES (%s, %s, %s, %s)
+                '''
+                cursor.execute(sql, (drug_info['name'], drug_info['quantity'], drug_info['price'], drug_info['category']))
+            con.commit()
+            print(f"{drug_info['name']} added to the database.")
+    except pymysql.IntegrityError:
+        print(f"{drug_info['name']} already exists in the database.")
+    except pymysql.Error as e:
+        print(f"Error adding drug: {e}")
+def remove_drug(drug_info):
+    global con
+
+    if con is None:
+        initialize_db()  # Initialize database connection if not already done
+
+    if con:
+        try:
+            with con.cursor() as cursor:
+                sql = '''
+                DELETE FROM drug_info
+                WHERE name = %s AND quantity = %s AND price = %s AND category = %s
+                '''
+                cursor.execute(sql, (drug_info['name'], drug_info['quantity'], drug_info['price'], drug_info['category']))
+            con.commit()
+            print(f"{drug_info['name']} removed from the database.")
+        except pymysql.Error as e:
+            print(f"Error removing drug: {e}")
+
+       
+    
+
 def main():
-    # Initialize an empty dictionary to store drugs information
-    drugs = {}
-
-    def add_drug(drugs):
-        #FUNCTION TO  ADD DRUGS
-        name = input("Enter the name of the drug: ")
-        if name in drugs:
-            print(f"{name} is already in the list.") 
-        else:
-            drugs[name] = {
-                #STORING THE OTHER VARIABLES WITHIN THE INITIAL NAME VARIABLE
-                "Quantity": int(input("Enter quantity: ")),
-                "Price": float(input("Enter price: ")),
-                "Category": input("Enter category: ")
-            }
-            print(f"{name} added to the list.")
-
-    def remove_drug(drugs):
-        #FUNCTION TO DELETE A DRUG FROM THE DICTIONARY
-        #THINK OF WHETHER TO REMOVE A CERTAIN VARIABLE 
-        name = input("Enter the name of the drug to remove: ")
-        if name in drugs:
-            del drugs[name]
-            print(f"{name} removed from the list.")
-        else:
-            print(f"{name} is not in the list.")
-
-    def search_drug(drugs):
-        #FUNCTION TO SEARCH WITHIN THE DICTIONARY
-        name = input("Enter the name of the drug to search: ")
-        if name in drugs:
-            print(f"Name: {name}")
-            print(f"Quantity: {drugs[name]['Quantity']}")
-            print(f"Price: {drugs[name]['Price']}")
-            print(f"Category: {drugs[name]['Category']}")
-        else:
-            print(f"{name} is not found in the list.")
-
-    def edit_drug(drugs):
-        #FUNCTION TO EDIT DRUG INFORMATION
-        name = input("Enter the name of the drug to edit: ")
-        if name in drugs:
-            print(f"Current information for {name}:")
-            print(f"Quantity: {drugs[name]['Quantity']}")
-            print(f"Price: {drugs[name]['Price']}")
-            print(f"Category: {drugs[name]['Category']}")
-            drugs[name]["Quantity"] = int(input("Enter new quantity: "))
-            drugs[name]["Price"] = float(input("Enter new price: "))
-            drugs[name]["Category"] = input("Enter new category: ")
-            print(f"{name} information updated.")
-        else:
-            print(f"{name} is not in the list.")
-
-    def print_drugs(drugs):
-        #FUNCTION TO PRINT DICTIONARY
-        if not drugs:
-            print("No drugs in the list.")
-        else:
-            print("List of drugs:")
-            #LOOP TO PRINT DICTIONARY
-            for name, info in drugs.items():
-                print(f"Name: {name}")
-                print(f"Quantity: {info['Quantity']}")
-                print(f"Price: {info['Price']}")
-                print(f"Category: {info['Category']}")
-                print("--------------------------")
+    initialize_db()
 
     while True:
-        #LOOPING THE DROWN DOWN MENU
         print("\nMenu:")
         print("1. Add drug information")
         print("2. Remove drug information")
@@ -78,21 +71,25 @@ def main():
         choice = input("Enter your choice (1-6): ")
 
         if choice == '1':
-            add_drug(drugs)
-        elif choice == '2':
-            remove_drug(drugs)
-        elif choice == '3':
-            search_drug(drugs)
-        elif choice == '4':
-            edit_drug(drugs)
-        elif choice == '5':
-            print_drugs(drugs)
-        elif choice == '6':
-            print("Exiting program. Goodbye!")
-            break
-        else:
-            print("Invalid choice. Please enter a number from 1 to 6.")
+            name = input("Enter the name of the drug: ")
+            quantity = int(input("Enter quantity: "))
+            price = float(input("Enter price: "))
+            category = input("Enter category: ")
+            add_drug({'name': name, 'quantity': quantity, 'price': price, 'category': category})
+        if choice == '2':
+            name = input("Enter the name of the drug: ")
+            quantity = int(input("Enter quantity: "))
+            price = float(input("Enter price: "))
+            category = input("Enter category: ")
+            remove_drug({'name': name, 'quantity': quantity, 'price': price, 'category': category})
+           
 
-# Call the main function to start the program
+        elif choice == '6':
+            break
+
+    if con:
+        con.close()
+        print("Database connection closed.")
+
 if __name__ == "__main__":
     main()

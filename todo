@@ -15,3 +15,5 @@ https://www.geeksforgeeks.org/append-a-value-to-a-dictionary-python/
 Notes: 
 prices might only be updated when a full box of a drug is sold , but we sell satchets at times
 Will the dictionary automatically assign an ID 
+now working on the database
+user should not be able add drug more than once
