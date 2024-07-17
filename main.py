@@ -53,6 +53,26 @@ def remove_drug(drug_info):
             print(f"{drug_info['name']} removed from the database.")
         except pymysql.Error as e:
             print(f"Error removing drug: {e}")
+def edit_drug(drug_info):
+    global con
+
+    if con is None:
+        initialize_db()  # Initialize database connection if not already done
+
+    if con:
+        try:
+            with con.cursor() as cursor:
+                sql = '''
+                UPDATE drug_info
+                SET quantity = %s, price = %s, category = %s
+                WHERE name = %s
+                '''
+                cursor.execute(sql, (drug_info['quantity'], drug_info['price'], drug_info['category'], drug_info['name']))
+            con.commit()
+            print(f"{drug_info['name']} updated in the database.")
+        except pymysql.Error as e:
+            print(f"Error updating drug: {e}")
+
 
        
     
@@ -76,12 +96,20 @@ def main():
             price = float(input("Enter price: "))
             category = input("Enter category: ")
             add_drug({'name': name, 'quantity': quantity, 'price': price, 'category': category})
+            
         if choice == '2':
             name = input("Enter the name of the drug: ")
             quantity = int(input("Enter quantity: "))
             price = float(input("Enter price: "))
             category = input("Enter category: ")
             remove_drug({'name': name, 'quantity': quantity, 'price': price, 'category': category})
+            
+        if choice == '4':
+            name = input("Enter the name of the drug: ")
+            quantity = int(input("Enter quantity: "))
+            price = float(input("Enter price: "))
+            category = input("Enter category: ")
+            edit_drug({'name': name, 'quantity': quantity, 'price': price, 'category': category})
            
 
         elif choice == '6':
