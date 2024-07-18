@@ -17,3 +17,9 @@ prices might only be updated when a full box of a drug is sold , but we sell sat
 Will the dictionary automatically assign an ID 
 now working on the database
 user should not be able add drug more than once
+
+
+print all => CSV *
+search by name, Category //perform a print function when user enters the name or category
+search menu
+the edit might fetch a particular item by name before edit takes place using the fetchone function
